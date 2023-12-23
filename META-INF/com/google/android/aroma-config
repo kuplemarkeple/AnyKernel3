@@ -501,6 +501,29 @@ selectbox(
           "<~text_yes>",    "<~dobackup.boot>",    0,    #-- selected.4 = 1
           "<~text_no>",    "<~dontbackup.boot>",    1    #-- selected.4 = 2
 );
+
+selectbox(
+      #-- Title
+        "",
+      #-- Description
+        "<~add.on>",
+      #-- Icon
+        "@extension",
+      #-- Property
+        "overclock.prop",
+        
+      #-------------------------------+------------------------------+-------#
+      # TITLE                         | DESCRIPTION                  | VALUE #
+      #-------------------------------+------------------------------+-------#
+    
+        "<~cpuoverclock.dialog> ?",        "",                              2,  #-- Group 1. key = "selected.1"
+          "<~text_yes>",    "<~cpuoverclock.info>",    0,    #-- selected.1 = 1
+		  "<~text_no>",    "<~nocpuoverclock.info>",    1,    #-- selected.1 = 2
+		
+		"<~gpuoverclock.dialog> ?",        "",                              2,  #-- Group 2. key = "selected.2"
+          "<~text_yes>",    "<~gpuoverclock.info>",    0,    #-- selected.2 = 1
+		  "<~text_no>",    "<~nogpuoverclock.info>",    1    #-- selected.2 = 2
+);
 	
 ini_set("text_next", "<~text_install>");
 

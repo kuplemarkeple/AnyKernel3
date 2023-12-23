@@ -221,6 +221,39 @@ fi;
 android_ver=$(file_getprop /system/build.prop ro.build.version.release);
 patch_cmdline androidboot.version androidboot.version=$android_ver
 
+# Overclock CPU & GPU
+if [ "`$BB grep -w "selected.1=1" /tmp/aroma-data/overclock.prop`" ];then
+	if [ "$REG" = "IDN" ] || [ "$REG" = "JAV" ] || [ "$REG" = "SUN" ];then
+	ui_print "- CPU di-Overclock";
+	elif [ "$REG" = "EN" ];then
+	ui_print "- CPU Overclocked";
+	fi;
+	patch_cmdline overclock.cpu overclock.cpu=1
+elif [ "`$BB grep -w "selected.1=2" /tmp/aroma-data/overclock.prop`" ];then
+	if [ "$REG" = "IDN" ] || [ "$REG" = "JAV" ] || [ "$REG" = "SUN" ];then
+	ui_print "- CPU tidak di-Overclock";
+	elif [ "$REG" = "EN" ];then
+	ui_print "- CPU not Overclock";
+	fi;
+	patch_cmdline overclock.cpu overclock.cpu=0
+fi;
+
+if [ "`$BB grep -w "selected.2=1" /tmp/aroma-data/overclock.prop`" ];then
+	if [ "$REG" = "IDN" ] || [ "$REG" = "JAV" ] || [ "$REG" = "SUN" ];then
+	ui_print "- GPU di-Overclock";
+	elif [ "$REG" = "EN" ];then
+	ui_print "- GPU Overclocked";
+	fi;
+	patch_cmdline overclock.gpu overclock.gpu=1
+elif [ "`$BB grep -w "selected.2=2" /tmp/aroma-data/overclock.prop`" ];then
+	if [ "$REG" = "IDN" ] || [ "$REG" = "JAV" ] || [ "$REG" = "SUN" ];then
+	ui_print "- GPU tidak di-Overclock";
+	elif [ "$REG" = "EN" ];then
+	ui_print "- GPU not Overclock";
+	fi;
+	patch_cmdline overclock.gpu overclock.gpu=0
+fi;
+
 # Refresh Rate Changer
 if [ "`$BB grep -w "selected.3=1" /tmp/aroma-data/refrate.prop`" ];then
 RR=48
