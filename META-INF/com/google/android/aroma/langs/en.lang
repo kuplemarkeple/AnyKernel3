@@ -156,6 +156,12 @@ kernelsuenable.info=Install this kernel with KernelSU support.
 kernelsuenablesafe.info=Install this kernel with KernelSU (Safe Mode) support. U can't Install any modules if this mode selected.
 kernelsudisable.info=Install this kernel without KernelSU support.
 safe.mode=Safe Mode
+cpuoverclock.dialog=Overclock CPU
+cpuoverclock.info=This will overclock CPU Freq
+nocpuoverclock.info=This will not do anything on CPU (Stock)
+gpuoverclock.dialog=Overclock GPU
+gpuoverclock.info=This will overclock GPU Freq
+nogpuoverclock.info=This will not do anything on GPU Freq (Stock)
 
 terms.title=Terms and Conditions
 terms.desc=Please read carefully The AROMA Installer Terms and Conditions Below.
