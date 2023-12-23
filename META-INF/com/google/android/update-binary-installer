@@ -493,7 +493,28 @@ AddSpectrum(){
   $BB mount -o rw,remount -t auto /system;
   $BB mount -o rw,remount -t auto /vendor 2>/dev/null;
   
-if [ "`$BB grep -w "selected.1=1" /tmp/aroma-data/spectrum.prop`" ] && [ -e $AKHOME/spectrum/init.spectrum.rc ];then
+if [ "`$BB grep -w "selected.1=1" /tmp/aroma-data/overclock.prop`" ] && [ "`$BB grep -w "selected.2=1" /tmp/aroma-data/overclock.prop`" ];then
+OC="Y"
+elif [ "`$BB grep -w "selected.1=2" /tmp/aroma-data/overclock.prop`" ] && [ "`$BB grep -w "selected.2=2" /tmp/aroma-data/overclock.prop`" ];then
+OC="N"
+else
+OC="U"
+fi;
+
+if [ "`$BB grep -w "selected.1=1" /tmp/aroma-data/spectrum.prop`" ];then
+if [ "$OC" = "U" ];then
+  if [ "$REG" = "IDN" ];then
+  ui_print "! Spectum tidak tersedia bila hanya salah satu yang dioverclock !";
+  elif [ "$REG" = "JAV" ];then
+  ui_print "! Spéktrum teu sadia lamun ngan hiji overclocked !";
+  elif [ "$REG" = "SUN" ];then
+  ui_print "! Spektrum ora kasedhiya nalika mung siji sing overclocked !";
+  elif [ "$REG" = "EN" ];then
+  ui_print "! Spectrum is not available when only one is overclocked !";
+  fi;
+  REMOVESPECTRUM="Y"
+elif [ -e $AKHOME/spectrum/init.spectrum.rc ] || [ -e $AKHOME/spectrum/init.spectrum-oc.rc ];then 
+  REMOVESPECTRUM="N"
   cd $AKHOME;
 
   # add spectrum support
@@ -539,7 +560,11 @@ if [ "`$BB grep -w "selected.1=1" /tmp/aroma-data/spectrum.prop`" ] && [ -e $AKH
 	elif [ "$REG" = "EN" ];then
 	ui_print "- Patching Spectrum Script...";
 	fi
-	cp -af $AKHOME/spectrum/init.spectrum.rc /vendor/etc/init/hw/
+    if [ "`$BB grep -w "selected.1=1" /tmp/aroma-data/overclock.prop`" ] && [ "`$BB grep -w "selected.2=1" /tmp/aroma-data/overclock.prop`" ];then
+		cp -af $AKHOME/spectrum/init.spectrum-oc.rc /vendor/etc/init/hw/init.spectrum.rc
+	elif [ "`$BB grep -w "selected.1=2" /tmp/aroma-data/overclock.prop`" ] && [ "`$BB grep -w "selected.2=2" /tmp/aroma-data/overclock.prop`" ];then
+		cp -af $AKHOME/spectrum/init.spectrum.rc /vendor/etc/init/hw/init.spectrum.rc
+	fi;
     chmod -R 644 /vendor/etc/init/hw/init.spectrum.rc
 	cp -af $AKHOME/spectrum/init.spectrum.sh /vendor/bin/
     chmod -R 755 /vendor/bin/init.spectrum.sh
@@ -564,7 +589,11 @@ if [ "`$BB grep -w "selected.1=1" /tmp/aroma-data/spectrum.prop`" ] && [ -e $AKH
       rm -rf /system/init.spectrum.sh
       ui_print "remove /system/init.spectrum.sh"
 	fi
-  elif [ "`$BB grep -w "selected.1=2" /tmp/aroma-data/spectrum.prop`" ] || [ ! -e $AKHOME/spectrum/init.spectrum.rc ];then
+fi;
+elif [ "`$BB grep -w "selected.1=2" /tmp/aroma-data/spectrum.prop`" ];then
+	REMOVESPECTRUM="Y"
+fi;
+if [ "$REMOVESPECTRUM" == "Y" ];then
     if [ -e /vendor/etc/init/hw/init.spectrum.rc ];then
 	  if [ "$REG" = "IDN" ];then
 	  ui_print "- Menghapus Skrip Spectrum Lama..."
@@ -587,7 +616,8 @@ if [ "`$BB grep -w "selected.1=1" /tmp/aroma-data/spectrum.prop`" ] && [ -e $AKH
       rm -rf /vendor/etc/init/hw/init.qcom.rc.backup
       grep "import /vendor/etc/init/hw/init.spectrum.rc" /vendor/etc/init/hw/init.qcom.rc >/dev/null | sed -i '/import \/vendor\/etc\/init\/hw\/init.spectrum.rc/d' /vendor/etc/init/hw/init.qcom.rc
     fi
-  fi
+fi
+	
   $BB mount -o ro,remount -t auto /system;
   $BB mount -o ro,remount -t auto /vendor 2>/dev/null;
 }
