@@ -220,6 +220,54 @@ fi;
 android_ver=$(file_getprop /system/build.prop ro.build.version.release);
 patch_cmdline androidboot.version androidboot.version=$android_ver
 
+# Refresh Rate Changer
+if [ "`$BB grep -w "selected.3=1" /tmp/aroma-data/refrate.prop`" ];then
+RR=48
+elif [ "`$BB grep -w "selected.3=2" /tmp/aroma-data/refrate.prop`" ];then
+RR=50
+elif [ "`$BB grep -w "selected.3=3" /tmp/aroma-data/refrate.prop`" ];then
+RR=55
+elif [ "`$BB grep -w "selected.3=5" /tmp/aroma-data/refrate.prop`" ];then
+RR=62
+elif [ "`$BB grep -w "selected.3=6" /tmp/aroma-data/refrate.prop`" ];then
+RR=64
+elif [ "`$BB grep -w "selected.3=7" /tmp/aroma-data/refrate.prop`" ];then
+RR=65
+elif [ "`$BB grep -w "selected.3=8" /tmp/aroma-data/refrate.prop`" ];then
+RR=67
+elif [ "`$BB grep -w "selected.3=9" /tmp/aroma-data/refrate.prop`" ];then
+RR=68
+elif [ "`$BB grep -w "selected.3=10" /tmp/aroma-data/refrate.prop`" ];then
+RR=69
+elif [ "`$BB grep -w "selected.3=11" /tmp/aroma-data/refrate.prop`" ];then
+RR=70
+elif [ "`$BB grep -w "selected.3=12" /tmp/aroma-data/refrate.prop`" ];then
+RR=72
+else
+RR=60
+fi
+
+ui_print "- Refresh Rate: $RR Hz.";
+
+if [ "$RR" = "60" ]; then
+if [ "$REG" = "IDN" ];then
+ui_print "- Melompati Modifikasi Refresh Rate ...";
+elif [ "$REG" = "JAV" ];then
+ui_print "- Nglumpati Modifikasi Refresh Rate ...";
+elif [ "$REG" = "SUN" ];then
+ui_print "- Ngalangkungan Modifikasi Refresh Rate ...";
+elif [ "$REG" = "EN" ];then
+ui_print "- Skipping Modify Refresh Rate ...";
+fi;
+else
+if [ "$REG" = "IDN" ] || [ "$REG" = "SUN" ] || [ "$REG" = "JAV" ];then
+ui_print "- Memodifikasi Refresh Rate ...";
+elif [ "$REG" = "EN" ];then
+ui_print "- Modifying Refresh Rate ...";
+fi;
+patch_cmdline refresh.rate refresh.rate=$RR;
+fi;
+
 # Switch Vibration Type
 NLVib() {
 if [ "$REG" = "IDN" ] || [ "$REG" = "JAV" ] || [ "$REG" = "SUN" ];then
