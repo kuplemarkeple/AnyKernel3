@@ -153,6 +153,9 @@ nocpuoverclock.info=This will not do anything on CPU (Stock)
 gpuoverclock.dialog=Overclock GPU
 gpuoverclock.info=This will overclock GPU Freq
 nogpuoverclock.info=This will not do anything on GPU Freq (Stock)
+fastcharging.dialog=Enable Fast Charging
+fastcharging.info=This will enable Fast Charging by default
+nofastcharging.info=This will disable Fast Charging by default (Stock)
 
 terms.title=Terms and Conditions
 terms.desc=Please read carefully The AROMA Installer Terms and Conditions Below.
