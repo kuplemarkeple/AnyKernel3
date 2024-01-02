@@ -164,6 +164,8 @@ nogpuoverclock.info=Ini tidak akan melakukan apapun pada Freq GPU (Stock)
 fastcharging.dialog=Hidupkan Pengisian Cepat
 fastcharging.info=Ini akan menghidupkan Pengisian Cepat secara default
 nofastcharging.info=Ini tidak akan menghidupkan Pengisian Cepat secara default (Stock)
+super.fast=Super Cepat
+superfastcharging.info=Ini akan menghidupkan Pengisian Cepat Super secara default
 
 terms.title=Syarat dan Ketentuan
 terms.desc=Mohon Baca dengan Seksama Ketentuan dibawah ini.
