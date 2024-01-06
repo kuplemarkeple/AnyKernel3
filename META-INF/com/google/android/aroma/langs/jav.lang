@@ -161,11 +161,11 @@ nocpuoverclock.info=Ini tidak akan melakukan apapun pada Freq CPU (Stock)
 gpuoverclock.dialog=Overclock GPU
 gpuoverclock.info=Ini akan me-overclock Freq GPU
 nogpuoverclock.info=Ini tidak akan melakukan apapun pada Freq GPU (Stock)
-fastcharging.dialog=Hidupkan Pengisian Cepat
-fastcharging.info=Ini akan menghidupkan Pengisian Cepat secara default
-nofastcharging.info=Ini tidak akan menghidupkan Pengisian Cepat secara default (Stock)
-super.fast=Super Cepat
-superfastcharging.info=Ini akan menghidupkan Pengisian Cepat Super secara default
+fastcharging.dialog=Hidupkan Hack Pengisian Cepat
+fastcharging.info=Ini akan menghidupkan Hack Pengisian Cepat (Aman) secara default
+nofastcharging.info=Ini tidak akan menghidupkan Hack Pengisian Cepat secara default (Stock)
+superfastcharging.info=Ini akan menghidupkan Hack Pengisian Cepat (Super) secara default
+mode=Mode
 
 terms.title=Syarat lan Ketentuan
 terms.desc=Woco kanthi tliti Syarat lan Ketentuan AROMA Installer Ing ngisor iki.
