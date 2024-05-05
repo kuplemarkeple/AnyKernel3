@@ -4,7 +4,7 @@
 ### AnyKernel setup
 # global properties
 properties() { '
-kernel.string=TheOneMemory kernel v4.19
+kernel.string=TheOneMemory kernel v4.4.302
 do.devicecheck=1
 do.modules=0
 do.systemless=1
@@ -41,13 +41,13 @@ patch_vbmeta_flag=auto;
 dump_boot; # use split_boot to skip ramdisk unpack, e.g. for devices with init_boot ramdisk
 
 # activate kernelsu by boot cmdline
-patch_cmdline kernelsu.enabled kernelsu.enabled=1
+#patch_cmdline kernelsu.enabled kernelsu.enabled=1
 
 # activate New Novatek Touchscreen Driver by boot cmdline
-patch_cmdline use_new_nvtouch use_new_nvtouch=0
+#patch_cmdline use_new_nvtouch use_new_nvtouch=0
 
 # activate kernelsu safemode by boot cmdline
-patch_cmdline kernelsu.safemode kernelsu.safemode=0
+#patch_cmdline kernelsu.safemode kernelsu.safemode=0
 
 write_boot; # use flash_boot to skip ramdisk repack, e.g. for devices with init_boot ramdisk
 ## end boot install
