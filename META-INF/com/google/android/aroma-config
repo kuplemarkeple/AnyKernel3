@@ -40,7 +40,7 @@ splash(
     "tom2"
 );
 theme("materialize_blacksline");
-fontresload( "0", "ttf/SpaceMono-Regular.ttf", "10" );
+fontresload( "0", "ttf/SpaceMono-Regular.ttf", "8" );
 fontresload( "1", "ttf/SpaceMono-Regular.ttf", "10" );
 
 selectbox(
