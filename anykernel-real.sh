@@ -59,10 +59,8 @@ chmod -R 750 $ramdisk/*;
 chmod -R 755 $ramdisk/sbin;
 chmod -R root:root $ramdisk/*;
 else
-boot_attributes() {
 set_perm_recursive 0 0 755 644 $ramdisk/*;
 set_perm_recursive 0 0 755 755 $ramdisk/init* $ramdisk/sbin;
-} # end attributes
 fi
 
 
