@@ -15,7 +15,7 @@ device.name2=ASUS_X00TD
 device.name3=WW_X00TD
 device.name4=X00T
 device.name5=WW_X00T
-supported.versions=11-14
+supported.versions=11-15
 supported.patchlevels=
 supported.vendorpatchlevels=
 '; } # end properties
